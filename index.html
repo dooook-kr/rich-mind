@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>부자 마인드셋 체크</title>
+    <meta name="description" content="15가지 질문으로 알아보는 나의 부자 마인드셋 진단">
+    <meta property="og:title" content="부자 마인드셋 체크">
+    <meta property="og:description" content="15가지 질문으로 알아보는 나의 부자 마인드셋 진단">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><span class="rich-bold">Rich Mindset</span> <span class="test-light">Test</span></h1>
+            <p class="header-subtitle">부자 마인드셋 테스트</p>
+            <div class="header-intro">
+                <p class="intro-main">나는 얼마나 부자의 마인드셋으로 살고 있는지</p>
+                <p class="intro-sub">시간, 자산, 관계의 측면에서 체크해 보세요!</p>
+            </div>
+        </header>
+
+        <main>
+            <!-- 대문 페이지 -->
+            <div class="intro-container" id="introContainer">
+                <div class="intro-content">
+                    <div class="intro-description">
+                        <p class="intro-text">
+                            <strong>부자들의 생각법</strong>은 일반인과 다릅니다.<br>
+                            시간, 자산, 관계에 대한 당신의 마인드셋을<br>
+                            <strong>15가지 질문</strong>으로 진단해보세요.
+                        </p>
+                        
+                        <div class="intro-features">
+                            <div class="feature-item">
+                                <div class="feature-icon">⏰</div>
+                                <div class="feature-title">시간 가치</div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">💎</div>
+                                <div class="feature-title">자산 창출</div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">🧡</div>
+                                <div class="feature-title">관계 투자</div>
+                            </div>
+                        </div>
+                        
+                        <div class="intro-note">
+                            <p>💡 2분 소요 • 개인정보 수집 없음 • 즉시 결과 확인</p>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-start" id="startTestBtn">
+                        테스트 시작하기
+                    </button>
+                </div>
+            </div>
+
+            <!-- 체크리스트 섹션 -->
+            <div class="quiz-container" id="quizContainer" style="display: none;">
+                <!-- JavaScript가 동적으로 질문들을 생성합니다 -->
+            </div>
+
+            <!-- 결과 화면 -->
+            <div class="result-container" id="resultContainer" style="display: none;">
+                <header class="result-header">
+                    <h1><span class="rich-bold">Rich Mindset</span> <span class="test-light">Test</span></h1>
+                    <p class="header-subtitle">부자 마인드셋 테스트</p>
+                    <div class="header-intro">
+                        <p class="intro-main">부자 마인드셋 진단 결과입니다.</p>
+                        <p class="intro-sub">시간, 자산, 관계 - 세 영역에서 각각 분석되었습니다.</p>
+                    </div>
+                </header>
+
+                <div class="result-content">
+                    <!-- 시간 영역 -->
+                    <div class="category-section" id="timeSection">
+                        <div class="category-header">
+                            <div class="category-icon">🕐</div>
+                            <div class="category-title">시간 가치</div>
+                            <div class="category-score">
+                                <div class="score-icons" id="timeScore"></div>
+                            </div>
+                        </div>
+                        <div class="category-feedback" id="timeFeedback"></div>
+                        <div class="category-task" id="timeTask"></div>
+                    </div>
+
+                    <!-- 자산 영역 -->
+                    <div class="category-section" id="assetSection">
+                        <div class="category-header">
+                            <div class="category-icon">💎</div>
+                            <div class="category-title">자산 창출</div>
+                            <div class="category-score">
+                                <div class="score-icons" id="assetScore"></div>
+                            </div>
+                        </div>
+                        <div class="category-feedback" id="assetFeedback"></div>
+                        <div class="category-task" id="assetTask"></div>
+                    </div>
+
+                    <!-- 관계 영역 -->
+                    <div class="category-section" id="relationshipSection">
+                        <div class="category-header">
+                            <div class="category-icon">🧡</div>
+                            <div class="category-title">관계 투자</div>
+                            <div class="category-score">
+                                <div class="score-icons" id="relationshipScore"></div>
+                            </div>
+                        </div>
+                        <div class="category-feedback" id="relationshipFeedback"></div>
+                        <div class="category-task" id="relationshipTask"></div>
+                    </div>
+
+                    <!-- 추천 도서 섹션 -->
+                    <div class="book-recommendation-compact">
+                        <div class="book-header-compact">
+                            <h3>🌟 부자 마인드셋 추천도서</h3>
+                            <p>테스트 결과를 바탕으로 더 학습하고 싶다면<br>이 책으로 부자들의 사고방식을 배워보세요</p>
+                        </div>
+                        
+                        <div class="book-content-compact">
+                            <div class="book-image-compact">
+                                <a href="https://link.coupang.com/a/cKfs5R" target="_blank" referrerpolicy="unsafe-url">
+                                    <img src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791193262474.jpg" alt="부의 전략 수업" width="120" height="180">
+                                </a>
+                            </div>
+                            <div class="book-info-compact">
+                                <div class="book-title-compact">부의 전략 수업 <span class="book-title-english">(Money Strategy)</span></div>
+                                <div class="book-desc-compact">
+                                    돈과 삶을 바라보는 근본적인 시각 변화를 통해, 돈에 휘둘리지 않고 돈을 통제하는 마인드셋을 배울 수 있습니다.
+                                </div>
+                                <a href="https://link.coupang.com/a/cKfs5R" target="_blank" referrerpolicy="unsafe-url" class="book-btn-compact">
+                                    자세히 보기
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="book-note-compact">
+                            <p>위 링크로 구입할 경우 일정액의 수수료를 제공받으며<br>이는 유용한 무료 콘텐츠 제작에 큰 도움이 됩니다.</p>
+                        </div>
+                    </div>
+
+                <div class="result-actions" id="resultActions">
+                    <button class="btn-secondary" id="retryBtn">
+                        다시 테스트하기
+                    </button>
+                    <button class="btn-share" id="shareBtn">
+                        결과 공유하기
+                    </button>
+                </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 Agnes Legrand. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/share.js"></script>
+    <script src="js/storage.js"></script>
+</body>
+</html>

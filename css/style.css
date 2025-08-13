@@ -1,0 +1,1620 @@
+/* Premium Mindset Checker App */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+@import url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+
+@font-face {
+    font-family: 'GmarketSans';
+    font-weight: 300;
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'GmarketSans';
+    font-weight: 500;
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'GmarketSans';
+    font-weight: 700;
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+}
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.5;
+    color: #1F2937;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 0;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* 컨테이너 내부만 흰색 배경 (헤더 제외) */
+.quiz-container,
+.result-content {
+    background: white;
+}
+
+@media (min-width: 651px) {
+    .container {
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+    }
+}
+
+
+/* Header */
+.header {
+    text-align: center;
+    padding: 50px 24px 40px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    /* 배경 제거 - body의 그라데이션 사용 */
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.header h1 {
+    font-family: 'GmarketSans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 2rem;
+    margin-bottom: 0px;
+    font-weight: 500;
+    color: white;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.rich-bold {
+    font-weight: 700;
+}
+
+.test-light {
+    font-weight: 300;
+}
+
+.header-subtitle {
+    font-family: 'GmarketSans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 300;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.header-intro {
+    position: relative;
+    z-index: 1;
+}
+
+.intro-main {
+    font-family: 'GmarketSans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.96rem;
+    color: white;
+    font-weight: 500;
+    margin-bottom: 4px;
+    line-height: 1.3;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.intro-sub {
+    font-family: 'GmarketSans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.96rem;
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+/* Intro Container */
+.intro-container {
+    background: white;
+    padding: 40px 24px 48px;
+    border-radius: 0;
+}
+
+.intro-content {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.intro-description {
+    margin-bottom: 40px;
+}
+
+.intro-text {
+    font-family: 'GmarketSans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #374151;
+    margin-bottom: 32px;
+    font-weight: 500;
+}
+
+.intro-features {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.feature-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    max-width: 120px;
+    padding: 16px 12px;
+    background: rgba(102, 126, 234, 0.03);
+    border-radius: 12px;
+    border: 1px solid rgba(102, 126, 234, 0.1);
+    transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+    background: rgba(102, 126, 234, 0.05);
+    border-color: rgba(102, 126, 234, 0.2);
+    transform: translateY(-2px);
+}
+
+.feature-icon {
+    font-size: 1.8rem;
+}
+
+.feature-title {
+    font-family: 'GmarketSans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1F2937;
+    text-align: center;
+}
+
+.intro-note {
+    padding: 16px 20px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+    border-radius: 12px;
+    border: 1px solid rgba(102, 126, 234, 0.15);
+}
+
+.intro-note p {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 0.8rem;
+    color: #374151;
+    margin: 0;
+    font-weight: 400;
+}
+
+.btn-start {
+    width: 100%;
+    max-width: 300px;
+    padding: 18px 32px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-family: 'GmarketSans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-start::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-start:hover {
+    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(102, 126, 234, 0.4);
+}
+
+.btn-start:hover::before {
+    left: 100%;
+}
+
+.btn-start:active {
+    transform: translateY(0);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+}
+
+
+/* Quiz Container */
+.quiz-container {
+    background: white;
+    padding: 32px 24px;
+    border-radius: 0;
+}
+
+/* Question Styles */
+.question {
+    margin-bottom: 20px;
+    padding: 20px 24px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    border: 1px solid rgba(102, 126, 234, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.question::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.question:hover {
+    border-color: rgba(102, 126, 234, 0.2);
+    background: rgba(255, 255, 255, 1);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(102, 126, 234, 0.15);
+}
+
+.question:hover::before {
+    opacity: 1;
+}
+
+.question-number {
+    font-size: 0.8rem;
+    color: #667eea;
+    font-weight: 700;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.question-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.question-text {
+    flex: 1;
+    font-size: 1rem;
+    color: #374151;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+/* Answer Options - Elegant Letter Buttons */
+.answer-options {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.answer-btn {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #E5E7EB;
+    border-radius: 50%;
+    background: white;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    color: #6B7280;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.yes-btn {
+    border-color: #10B981;
+    color: #10B981;
+}
+
+.no-btn {
+    border-color: #F59E0B;
+    color: #F59E0B;
+}
+
+.answer-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.yes-btn:hover {
+    background: #F0FDF4;
+    border-color: #059669;
+}
+
+.no-btn:hover {
+    background: #FFFBEB;
+    border-color: #D97706;
+}
+
+.yes-btn.selected {
+    background: #10B981;
+    border-color: #10B981;
+    color: white;
+    transform: scale(1.15);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);
+}
+
+.no-btn.selected {
+    background: #F59E0B;
+    border-color: #F59E0B;
+    color: white;
+    transform: scale(1.15);
+    box-shadow: 0 6px 20px rgba(245, 158, 11, 0.3);
+}
+
+/* Buttons */
+.btn-primary, .btn-secondary, .btn-share {
+    padding: 16px 32px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: 'GmarketSans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    border: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    margin: 40px auto 0;
+    display: block;
+    width: calc(100% - 48px);
+    max-width: 320px;
+    box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary:hover:not(:disabled)::before {
+    left: 100%;
+}
+
+.btn-primary:disabled {
+    background: #D1D5DB;
+    cursor: not-allowed;
+    color: #9CA3AF;
+    box-shadow: none;
+}
+
+.btn-secondary {
+    background: #F9FAFB;
+    color: #374151;
+    border: 1px solid #D1D5DB;
+}
+
+.btn-secondary:hover {
+    background: #F3F4F6;
+    border-color: #9CA3AF;
+}
+
+.btn-share {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    margin-right: 12px;
+    box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-share::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-share:hover {
+    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(102, 126, 234, 0.4);
+}
+
+.btn-share:hover::before {
+    left: 100%;
+}
+
+/* Button Container */
+.button-container {
+    margin-top: 40px;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* Result Container */
+.result-container {
+    padding: 0;
+}
+
+.result-header {
+    text-align: center;
+    padding: 50px 24px 40px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 10px;
+    /* 배경 제거 - body의 그라데이션 사용 */
+}
+
+/* Result Content */
+.result-content {
+    padding: 10px 24px 32px;
+}
+
+/* Score Summary */
+.score-summary {
+    margin-bottom: 32px;
+    padding: 32px 24px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+    border-radius: 16px;
+    border: 1px solid rgba(102, 126, 234, 0.15);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.score-summary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 30% 70%, rgba(102, 126, 234, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 70% 30%, rgba(118, 75, 162, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.total-score {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
+}
+
+.score-number {
+    font-size: 3rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    z-index: 1;
+}
+
+.score-label {
+    font-size: 1.125rem;
+    color: #6B7280;
+    margin-left: 4px;
+    font-weight: 500;
+}
+
+.score-percentage {
+    font-size: 1.1rem;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+    position: relative;
+    z-index: 1;
+}
+
+/* Category Sections */
+.category-section {
+    margin-bottom: 40px;
+    background: white;
+    border-radius: 20px;
+    border: 4px solid #9CA3AF;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.category-section:hover {
+    border-color: #667eea;
+    box-shadow: 0 12px 40px rgba(102, 126, 234, 0.2);
+    transform: translateY(-2px);
+}
+
+/* 시간 영역 - 보라색 */
+.category-section:nth-child(1) {
+    border-color: #8B5CF6;
+}
+
+.category-section:nth-child(1) .category-icon {
+    filter: none;
+}
+
+.category-section:nth-child(1) .category-task {
+    background: #DDD6FE;
+    border: 1px solid #8B5CF6;
+}
+
+.category-section:nth-child(1) .category-task .task-title {
+    color: #581C87;
+}
+
+.category-section:nth-child(1) .category-task .task-content {
+    color: #6B7280;
+    background: #F5F3FF;
+}
+
+/* 자산 영역 - 하늘색 */
+.category-section:nth-child(2) {
+    border-color: #0EA5E9;
+}
+
+.category-section:nth-child(2) .category-icon {
+    filter: none;
+}
+
+.category-section:nth-child(2) .category-task {
+    background: #BAE6FD;
+    border: 1px solid #0EA5E9;
+}
+
+.category-section:nth-child(2) .category-task .task-title {
+    color: #0C4A6E;
+}
+
+.category-section:nth-child(2) .category-task .task-content {
+    color: #6B7280;
+    background: #F0F9FF;
+}
+
+/* 관계 영역 - 주황색 */
+.category-section:nth-child(3) {
+    border-color: #F97316;
+}
+
+.category-section:nth-child(3) .category-icon {
+    filter: none;
+}
+
+.category-section:nth-child(3) .category-task {
+    background: #FED7AA;
+    border: 1px solid #F97316;
+}
+
+.category-section:nth-child(3) .category-task .task-title {
+    color: #C2410C;
+}
+
+.category-section:nth-child(3) .category-task .task-content {
+    color: #6B7280;
+    background: #FFF7ED;
+}
+
+.category-header {
+    display: flex;
+    align-items: center;
+    padding: 28px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.08), rgba(118, 75, 162, 0.08));
+    border-bottom: 2px solid #F3F4F6;
+    gap: 5px;
+}
+
+.category-icon {
+    font-size: 2.5rem;
+    width: 70px;
+    text-align: center;
+}
+
+.category-title {
+    flex: 1;
+    font-size: 1.6rem;
+    font-weight: 500;
+    font-family: 'GmarketSans', 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    letter-spacing: -0.03em;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* 시간 영역 타이틀 */
+.category-section:nth-child(1) .category-title {
+    color: #8B5CF6;
+}
+
+/* 자산 영역 타이틀 */
+.category-section:nth-child(2) .category-title {
+    color: #0EA5E9;
+}
+
+/* 관계 영역 타이틀 */
+.category-section:nth-child(3) .category-title {
+    color: #F97316;
+}
+
+.category-score {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.score-icons {
+    display: flex;
+    gap: 3px;
+    font-size: 1.4rem;
+}
+
+.score-filled {
+    /* 채워진 아이콘은 원래 색상 */
+}
+
+.score-empty {
+    /* 비어있는 아이콘은 회색 그림자 효과 */
+    filter: grayscale(100%) brightness(0.7) contrast(0.5);
+    opacity: 0.4;
+}
+
+.category-feedback {
+    padding: 20px 24px;
+    border-bottom: 1px solid #F9FAFB;
+}
+
+.category-feedback .feedback-content {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #4B5563;
+    font-weight: 400;
+}
+
+.category-task {
+    padding: 20px 24px;
+    background: #FEF3C7;
+}
+
+.category-task .task-title {
+    font-family: 'GmarketSans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #92400E;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.category-task .task-title:first-letter {
+    font-weight: 700;
+}
+
+.category-task .task-content {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: #6B7280;
+    background: white;
+    padding: 12px;
+    border-radius: 8px;
+    font-style: italic;
+    font-weight: 400;
+}
+
+/* Feedback Section */
+.feedback-section {
+    margin-bottom: 32px;
+}
+
+.feedback-item {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    border: 1px solid #F3F4F6;
+}
+
+.feedback-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.feedback-content {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #4B5563;
+    font-weight: 400;
+}
+
+/* Action Tasks */
+.action-tasks {
+    margin-bottom: 32px;
+}
+
+.task-item {
+    background: #FEF3C7;
+    border: 1px solid #FCD34D;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+}
+
+.task-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #92400E;
+    margin-bottom: 8px;
+}
+
+.task-content {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #92400E;
+    background: white;
+    padding: 12px;
+    border-radius: 8px;
+    font-style: italic;
+    font-weight: 400;
+}
+
+/* Book Recommendation */
+.book-recommendation {
+    margin: 40px 0 32px 0;
+    padding: 32px 24px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.02), rgba(118, 75, 162, 0.02));
+    border-radius: 20px;
+    border: 1px solid rgba(102, 126, 234, 0.1);
+    text-align: center;
+}
+
+.book-header h3 {
+    font-family: 'GmarketSans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.book-header p {
+    font-size: 0.95rem;
+    color: #4B5563;
+    line-height: 1.5;
+    margin-bottom: 24px;
+    font-weight: 400;
+}
+
+.book-card {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    background: white;
+    padding: 24px;
+    border-radius: 16px;
+    border: 1px solid rgba(102, 126, 234, 0.08);
+    margin-bottom: 20px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.book-image {
+    flex-shrink: 0;
+}
+
+.book-image a {
+    display: block;
+    text-decoration: none;
+}
+
+.book-image img {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.book-image a:hover img {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.book-info {
+    flex: 1;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.book-title {
+    font-family: 'GmarketSans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin-bottom: 4px;
+}
+
+.book-desc {
+    font-size: 0.9rem;
+    color: #6B7280;
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+
+.book-btn {
+    align-self: flex-start;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.book-btn:hover {
+    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+}
+
+.book-note {
+    margin-top: 16px;
+}
+
+.book-note p {
+    font-size: 0.75rem;
+    color: #9CA3AF;
+    margin: 0;
+    font-style: italic;
+}
+
+/* Book Recommendation Compact */
+.book-recommendation-compact {
+    margin: 40px 0 32px 0;
+    padding: 32px 24px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.02), rgba(118, 75, 162, 0.02));
+    border-radius: 20px;
+    border: 1px solid rgba(102, 126, 234, 0.1);
+    text-align: center;
+}
+
+.book-header-compact h3 {
+    font-family: 'GmarketSans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.book-header-compact p {
+    font-size: 0.8rem;
+    color: #4B5563;
+    line-height: 1.5;
+    margin-bottom: 32px;
+    font-weight: 400;
+}
+
+.book-content-compact {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 24px;
+    background: rgba(139, 92, 246, 0.12);
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.book-image-compact {
+    flex-shrink: 0;
+}
+
+.book-image-compact a {
+    display: block;
+    text-decoration: none;
+}
+
+.book-image-compact img {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.book-image-compact a:hover img {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.book-info-compact {
+    flex: 1;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: space-between;
+}
+
+.book-title-compact {
+    font-family: 'GmarketSans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1F2937;
+    line-height: 1.3;
+    margin-bottom: 4px;
+}
+
+.book-title-english {
+    font-size: 0.7em;
+    font-weight: 400;
+    color: #6B7280;
+}
+
+.book-desc-compact {
+    font-size: 0.9rem;
+    color: #6B7280;
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+
+.book-btn-compact {
+    align-self: flex-start;
+    padding: 8px 24px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.book-btn-compact:hover {
+    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+}
+
+.book-note-compact {
+    padding-top: 4px;
+    margin-top: 0;
+}
+
+.book-note-compact p {
+    font-size: 0.65rem;
+    color: #9CA3AF;
+    margin: 0;
+    line-height: 1.4;
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+.coupang-link {
+    color: #667eea;
+    font-weight: 500;
+}
+
+/* 공유 알림 */
+.share-notification {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-20px);
+    background: linear-gradient(135deg, #10B981, #059669);
+    color: white;
+    padding: 16px 24px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    box-shadow: 0 8px 32px rgba(16, 185, 129, 0.3);
+    z-index: 10000;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+.share-notification.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Result Actions */
+.result-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.result-actions .btn-secondary,
+.result-actions .btn-share {
+    flex: 1;
+    margin: 0;
+}
+
+.btn-take-test {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Print Styles */
+@media print {
+    /* 출력 시 페이지 스타일 최적화 */
+    body {
+        background: white !important;
+        color: black !important;
+        font-size: 12pt;
+        line-height: 1.4;
+    }
+    
+    .container {
+        box-shadow: none !important;
+        max-width: none !important;
+        margin: 0 !important;
+    }
+    
+    /* 출력 시 불필요한 요소들 숨기기 */
+    .result-actions,
+    .footer,
+    .btn-share,
+    .btn-secondary {
+        display: none !important;
+    }
+    
+    /* 출력용 제목 추가 */
+    .result-header::after {
+        content: "Rich Mindset Test 분석 결과";
+        display: block;
+        font-size: 18pt;
+        font-weight: bold;
+        text-align: center;
+        margin: 20px 0;
+        color: black;
+    }
+    
+    /* 출력 시 색상 조정 */
+    .category-section {
+        border: 2px solid #333 !important;
+        break-inside: avoid;
+        margin-bottom: 20px;
+    }
+    
+    .category-header {
+        background: #f5f5f5 !important;
+        border-bottom: 1px solid #333 !important;
+    }
+    
+    .category-title {
+        color: black !important;
+    }
+    
+    .score-icons {
+        filter: grayscale(100%);
+    }
+    
+    .category-feedback,
+    .category-task {
+        background: white !important;
+        color: black !important;
+    }
+    
+    .category-task {
+        border: 1px solid #333 !important;
+    }
+    
+    .task-title {
+        color: black !important;
+    }
+    
+    .task-content {
+        background: #f9f9f9 !important;
+        color: black !important;
+    }
+    
+    /* 출력 시 페이지 나누기 방지 */
+    .category-section {
+        page-break-inside: avoid;
+    }
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 24px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.875rem;
+    /* 배경 제거 - body의 그라데이션 사용 */
+}
+
+/* Enhanced Responsive Design */
+@media (max-width: 650px) {
+    .container {
+        margin: 0;
+        box-shadow: none;
+    }
+    
+    .header {
+        padding: 40px 16px 32px;
+    }
+    
+    .header h1 {
+        font-size: 1.6rem;
+    }
+    
+    .intro-main {
+        font-size: 1.1rem;
+    }
+    
+    .intro-sub {
+        font-size: 0.95rem;
+    }
+    
+    .quiz-container {
+        padding: 24px 16px;
+    }
+    
+    .question {
+        padding: 16px 20px;
+        margin-bottom: 16px;
+    }
+    
+    .question {
+        text-align: center;
+    }
+    
+    .question-number {
+        font-size: 1.1rem;
+        font-weight: 800;
+        margin-bottom: 16px;
+    }
+    
+    .question-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        text-align: center;
+    }
+    
+    .question-text {
+        font-size: 0.95rem;
+        width: 100%;
+    }
+    
+    .answer-options {
+        align-self: center;
+        margin-top: 8px;
+    }
+    
+    .result-header {
+        padding: 40px 16px 32px;
+    }
+    
+    .result-content {
+        padding: 24px 16px;
+    }
+    
+    .score-summary {
+        padding: 24px 16px;
+    }
+    
+    .score-number {
+        font-size: 2.5rem;
+    }
+    
+    .score-item {
+        padding: 16px;
+    }
+    
+    .feedback-item, .task-item {
+        padding: 16px;
+    }
+    
+    .result-actions {
+        justify-content: space-between;
+        gap: 8px;
+    }
+    
+    .btn-primary {
+        width: calc(100% - 32px);
+    }
+    
+    .btn-secondary, .btn-share {
+        flex: 1;
+        margin: 0;
+        font-size: 0.9rem;
+        padding: 14px 16px;
+    }
+    
+    .intro-container {
+        padding: 24px 16px 32px;
+    }
+    
+    .intro-text {
+        font-size: 1rem;
+        margin-bottom: 24px;
+    }
+    
+    .intro-features {
+        gap: 16px;
+        margin-bottom: 24px;
+    }
+    
+    .feature-item {
+        padding: 12px 8px;
+        max-width: 100px;
+    }
+    
+    .feature-icon {
+        font-size: 1.5rem;
+    }
+    
+    .feature-title {
+        font-size: 0.85rem;
+    }
+    
+    .btn-start {
+        width: calc(100% - 32px);
+        max-width: none;
+        font-size: 1rem;
+        padding: 16px 32px;
+    }
+    
+    .book-recommendation {
+        margin: 32px 0 24px 0;
+        padding: 24px 16px;
+    }
+    
+    .book-header h3 {
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+    }
+    
+    .book-header p {
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+    }
+    
+    .book-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 16px;
+        padding: 20px 16px;
+    }
+    
+    .book-info {
+        text-align: center;
+        gap: 8px;
+    }
+    
+    .book-title {
+        font-size: 1.1rem;
+    }
+    
+    .book-desc {
+        font-size: 0.85rem;
+    }
+    
+    .book-btn {
+        align-self: center;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+    }
+    
+    .book-note p {
+        font-size: 0.7rem;
+    }
+    
+    .book-recommendation-compact {
+        margin: 32px 0 24px 0;
+        padding: 24px 16px;
+    }
+    
+    .book-header-compact h3 {
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+    }
+    
+    .book-header-compact p {
+        font-size: 0.75rem;
+        margin-bottom: 24px;
+    }
+    
+    .book-content-compact {
+        gap: 16px;
+        margin-bottom: 20px;
+        padding: 16px;
+    }
+    
+    .book-info-compact {
+        text-align: left;
+        gap: 12px;
+    }
+    
+    .book-title-compact {
+        font-size: 1.1rem;
+    }
+    
+    .book-desc-compact {
+        font-size: 0.85rem;
+    }
+    
+    .book-btn-compact {
+        align-self: flex-start;
+        font-size: 0.85rem;
+        padding: 7px 20px;
+    }
+    
+    .book-note-compact p {
+        font-size: 0.6rem;
+    }
+}
+
+/* Loading Screen Styles */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(102, 126, 234, 0.95);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.loading-content {
+    text-align: center;
+    color: white;
+    max-width: 400px;
+    padding: 40px 20px;
+}
+
+.loading-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    animation: pulse 2s infinite;
+}
+
+.loading-title {
+    font-family: 'GmarketSans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: white;
+}
+
+.loading-subtitle {
+    font-family: 'GmarketSans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    margin-bottom: 30px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.loading-bar {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+.loading-progress {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #ffffff, rgba(255, 255, 255, 0.8));
+    border-radius: 2px;
+    animation: loadingProgress 4s ease-in-out forwards;
+}
+
+.loading-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+}
+
+.step {
+    font-family: 'GmarketSans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;
+    padding: 4px 0;
+}
+
+.step.active {
+    color: white;
+    font-weight: 500;
+    transform: scale(1.05);
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes loadingProgress {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .loading-content {
+        padding: 30px 15px;
+        max-width: 350px;
+    }
+    
+    .loading-icon {
+        font-size: 3rem;
+    }
+    
+    .loading-title {
+        font-size: 1.5rem;
+    }
+    
+    .loading-subtitle {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 32px 12px 24px;
+    }
+    
+    .header h1 {
+        font-size: 1.4rem;
+    }
+    
+    .intro-main {
+        font-size: 1rem;
+    }
+    
+    .intro-sub {
+        font-size: 0.9rem;
+    }
+    
+    .result-header {
+        padding: 32px 12px 24px;
+    }
+    
+    .result-content {
+        padding: 20px 12px;
+    }
+    
+    .quiz-container {
+        padding: 20px 12px;
+    }
+    
+    .question {
+        padding: 14px 16px;
+        margin-bottom: 14px;
+    }
+    
+    .question-text {
+        font-size: 0.9rem;
+    }
+    
+    .answer-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 0.8rem;
+    }
+    
+    
+    .score-summary {
+        padding: 20px 12px;
+    }
+    
+    .score-number {
+        font-size: 2.2rem;
+    }
+    
+    .btn-primary {
+        width: calc(100% - 24px);
+        padding: 14px 24px;
+        font-size: 0.95rem;
+    }
+}
